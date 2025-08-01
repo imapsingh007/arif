@@ -5,12 +5,6 @@ terraform {
       version = "4.38.1"
     }
   }
-    backend "azurerm" {
-    resource_group_name  = "ap-rg"
-    storage_account_name = "arifstorage12345"
-    container_name       = "arif-container"
-    key                  = "terraform.tfstate"
-  }
 }
 
 provider "azurerm" {
