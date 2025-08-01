@@ -26,15 +26,18 @@ stages:
                 sudo mv terraform /usr/local/bin/
                 terraform -version
 
-                # Init
-                terraform init \
+                # Reinitialize Terraform Backend
+                echo "Running terraform init with -reconfigure"
+                terraform init -reconfigure \
                   -backend-config="resource_group_name=your-backend-rg" \
                   -backend-config="storage_account_name=arifstorage12345" \
                   -backend-config="container_name=arif-container" \
                   -backend-config="key=terraform.tfstate1"
 
                 # Plan
+                echo "Running terraform plan"
                 terraform plan -var-file="terraform.tfvars"
 
                 # Apply
+                echo "Running terraform apply"
                 terraform apply -auto-approve -var-file="terraform.tfvars"
